@@ -29,6 +29,13 @@ namespace Cayd.Uuid
             SwapBytes(bytes, 4, 5);
             SwapBytes(bytes, 6, 7);
 
+            if (bytes.Length > 16)
+            {
+                var trimmedBytes = new byte[16];
+                Buffer.BlockCopy(bytes, 0, trimmedBytes, 0, 16);
+                return new Guid(trimmedBytes);
+            }
+
             return new Guid(bytes);
         }
 
