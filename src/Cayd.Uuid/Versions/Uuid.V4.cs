@@ -21,10 +21,10 @@ namespace Cayd.Uuid
 #endif
 
                 // 'ver' bits
-                bytes[6] = (byte)(0x40 | (bytes[6] & 0x3F));
+                bytes[6] = (byte)(0x40 | (bytes[6] & 0x0F));
 
                 // 'var' bits
-                bytes[8] = (byte)(0x80 | (bytes[8] & 0x0F));
+                bytes[8] = (byte)(0x80 | (bytes[8] & 0x3F));
 
                 return GenerateGuidFromBytes(bytes);
             }
