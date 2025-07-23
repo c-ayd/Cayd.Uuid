@@ -1,26 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using Xunit;
 
 namespace Cayd.Uuid.Test.Unit
 {
     public partial class UuidTest
     {
-        private string GenerateRandomString()
-        {
-            var random = new Random();
-            var builder = new StringBuilder(50);
-
-            for (int i = 0; i < 50; i++)
-            {
-                builder.Append((char)random.Next(32, 127));
-            }
-
-            return builder.ToString();
-        }
-
         [Fact]
         public void V3_Generate_ShouldGenerateUniqueGuids()
         {
