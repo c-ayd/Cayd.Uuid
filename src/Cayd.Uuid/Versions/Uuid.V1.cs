@@ -59,31 +59,31 @@ namespace Cayd.Uuid
 
                 _lastTimestamp = timestamp;
 
-                // 'time_low' bytes
+                // 'time_low' bits
                 bytes[0] = (byte)((timestamp >> 24) & 0xFF);
                 bytes[1] = (byte)((timestamp >> 16) & 0xFF);
                 bytes[2] = (byte)((timestamp >> 8) & 0xFF);
                 bytes[3] = (byte)(timestamp & 0xFF);
 
-                // 'time_mid' bytes
+                // 'time_mid' bits
                 bytes[4] = (byte)((timestamp >> 40) & 0xFF);
                 bytes[5] = (byte)((timestamp >> 32) & 0xFF);
 
-                // 'ver' bytes
+                // 'ver' bits
                 bytes[6] = 0x10;
 
-                // 'time_high' bytes
+                // 'time_high' bits
                 bytes[6] |= (byte)((timestamp >> 56) & 0x0F);
                 bytes[7] = (byte)((timestamp >> 48) & 0xFF);
 
-                // 'var' bytes
+                // 'var' bits
                 bytes[8] = 0x80;
 
-                // 'clock_seq' bytes
+                // 'clock_seq' bits
                 bytes[8] |= (byte)((_clockSequence >> 8) & 0x3F);
                 bytes[9] = (byte)(_clockSequence & 0xFF);
 
-                // 'node' bytes
+                // 'node' bits
                 for (int i = 0; i < 6; ++i)
                 {
                     bytes[i + 10] = _nodeId[i];
