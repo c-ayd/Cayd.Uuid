@@ -10,7 +10,7 @@ namespace Cayd.Uuid
         /** 
          * Guid byte order: [3][2][1][0]-[5][4]-[7][6] - [8-15]
          */
-        private static byte[] GetBytesOfGuid(Guid guid)
+        public static byte[] GetBytesOfGuid(Guid guid)
         {
             var bytes = guid.ToByteArray();
 
@@ -22,7 +22,7 @@ namespace Cayd.Uuid
             return bytes;
         }
 
-        private static Guid GenerateGuidFromBytes(byte[] bytes)
+        public static Guid GenerateGuidFromBytes(byte[] bytes)
         {
             SwapBytes(bytes, 0, 3);
             SwapBytes(bytes, 1, 2);

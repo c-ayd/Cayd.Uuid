@@ -1,5 +1,6 @@
 ﻿using System.Text;
 using System;
+using Xunit;
 
 namespace Cayd.Uuid.Test.Unit
 {
@@ -18,6 +19,12 @@ namespace Cayd.Uuid.Test.Unit
             }
 
             return builder.ToString();
+        }
+
+        private void CheckVersionAndVariantBits(byte[] bytes, byte versionBits, byte variantBits)
+        {
+            Assert.True((bytes[6] & versionBits) == versionBits, "The version bits differ.");
+            Assert.True((bytes[8] & variantBits) == variantBits, "The variant bits differ.");
         }
     }
 }

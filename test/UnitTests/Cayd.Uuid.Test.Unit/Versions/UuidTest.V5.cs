@@ -8,6 +8,16 @@ namespace Cayd.Uuid.Test.Unit
     public partial class UuidTest
     {
         [Fact]
+        public void V5_Generate_ShouldGenerateCorrectGuid()
+        {
+            // Act
+            var result = Uuid.V5.Generate(Uuid.V5.DnsNamespaceId, GenerateRandomString());
+
+            // Assert
+            CheckVersionAndVariantBits(Uuid.GetBytesOfGuid(result), 0x50, 0x80);
+        }
+
+        [Fact]
         public void V5_Generate_ShouldGenerateUniqueGuids()
         {
             // Arrange
