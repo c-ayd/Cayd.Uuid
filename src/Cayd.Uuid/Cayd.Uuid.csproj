@@ -2,6 +2,30 @@
 
   <PropertyGroup>
     <TargetFrameworks>net8.0;net6.0;net5.0;netstandard2.0</TargetFrameworks>
+    <GenerateDocumentationFile>True</GenerateDocumentationFile>
+    <PackageId>Cayd.Uuid</PackageId>
+    <Title>UUID library generating System.Guid types following RFC 9562</Title>
+    <Version>1.0.0</Version>
+    <Authors>Cemal A. Aydeniz</Authors>
+    <Description>A UUID library generating System.Guid types following RFC 9562.</Description>
+    <PackageProjectUrl>https://github.com/c-ayd/Cayd.Uuid</PackageProjectUrl>
+    <PackageIcon>nuget-logo.png</PackageIcon>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <RepositoryUrl>https://github.com/c-ayd/Cayd.Uuid</RepositoryUrl>
+    <PackageTags>cayd;uuid;guid;rfc;rfc-9562;uuid-v1;uuid-v2;uuid-v3;uuid-v4;uuid-v5;uuid-v6;uuid-v7;uuid-v8</PackageTags>
+    <PackageReleaseNotes>Initial release</PackageReleaseNotes>
+    <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\..\assets\nuget-logo.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+    <None Include="..\..\README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
 
 </Project>
