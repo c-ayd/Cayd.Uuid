@@ -91,7 +91,11 @@ namespace Cayd.Uuid
                     bytes[i + 10] = _nodeId[i];
                 }
 
+#if !NETSTANDARD2_0
+                return GenerateGuidFromBytes(bytes.AsSpan());
+#else
                 return GenerateGuidFromBytes(bytes);
+#endif
             }
 
             private static ushort GenerateClockSequence()

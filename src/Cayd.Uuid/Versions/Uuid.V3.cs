@@ -34,7 +34,11 @@ namespace Cayd.Uuid
                 // 'var' bits
                 bytes[8] = (byte)(0x80 | (bytes[8] & 0x3F));
 
+#if !NETSTANDARD2_0
+                return GenerateGuidFromBytes(bytes.AsSpan());
+#else
                 return GenerateGuidFromBytes(bytes);
+#endif
             }
         }
     }
