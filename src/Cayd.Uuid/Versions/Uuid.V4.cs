@@ -5,8 +5,15 @@ namespace Cayd.Uuid
 {
     public static partial class Uuid
     {
+        /// <summary>
+        /// UUIDv4 is meant for generating UUIDs from truly random or pseudorandom numbers.
+        /// </summary>
         public static class V4
         {
+            /// <summary>
+            /// Generates a new <see cref="Guid"/> based on UUIDv4 rules.
+            /// </summary>
+            /// <returns>Returns a <see cref="Guid"/> based on UUIDv4 rules.</returns>
             public static Guid Generate()
             {
                 var bytes = new byte[16];

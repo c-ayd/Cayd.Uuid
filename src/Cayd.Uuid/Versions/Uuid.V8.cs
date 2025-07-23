@@ -5,8 +5,21 @@ namespace Cayd.Uuid
 {
     public static partial class Uuid
     {
+        /// <summary>
+        /// UUIDv8 provides a format for experimental or vendor-specific use cases. The only requirement is that the variant and version bits
+        /// must be set. UUIDv8's uniqueness is based on implementation specific and must not be assumed.
+        /// </summary>
         public static class V8
         {
+            /// <summary>
+            /// Generates a new <see cref="Guid"/> based on UUIDv8 rules.
+            /// <para>
+            /// While generating <see cref="Guid"/>, the order of a given byte array changes accordingly.
+            /// </para>
+            /// </summary>
+            /// <param name="customData">Bytes of the given custom data. The length of the array must be 16.</param>
+            /// <returns>Returns a <see cref="Guid"/> based on UUIDv8 rules.</returns>
+            /// <exception cref="WrongDataLengthException">When the length of <c>customData</c> is wrong</exception>
             public static Guid Generate(byte[] customData)
             {
                 if (customData.Length != 16)
@@ -22,6 +35,15 @@ namespace Cayd.Uuid
             }
 
 #if !NETSTANDARD2_0
+            /// <summary>
+            /// Generates a new <see cref="Guid"/> based on UUIDv8 rules.
+            /// <para>
+            /// While generating <see cref="Guid"/>, the order of a given byte array changes accordingly.
+            /// </para>
+            /// </summary>
+            /// <param name="customData">Bytes of the given custom data. The length of the array must be 16.</param>
+            /// <returns>Returns a <see cref="Guid"/> based on UUIDv8 rules.</returns>
+            /// <exception cref="WrongDataLengthException">When the length of <c>customData</c> is wrong</exception>
             public static Guid Generate(Span<byte> customData)
             {
                 if (customData.Length != 16)
@@ -37,6 +59,17 @@ namespace Cayd.Uuid
             }
 #endif
 
+            /// <summary>
+            /// Generates a new <see cref="Guid"/> based on UUIDv8 rules.
+            /// <para>
+            /// While generating <see cref="Guid"/>, the order of a given byte array changes accordingly.
+            /// </para>
+            /// </summary>
+            /// <param name="customA">First 48 bits. The length of the array must be 6.</param>
+            /// <param name="customB">12 bits after the version bits. The length of the array must be 2.</param>
+            /// <param name="customC">62 bits after the variant bits. The length of the array must be 8.</param>
+            /// <returns>Returns a <see cref="Guid"/> based on UUIDv8 rules.</returns>
+            /// <exception cref="WrongDataLengthException">When the length of any custom data is wrong</exception>
             public static Guid Generate(byte[] customA, byte[] customB, byte[] customC)
             {
                 if (customA.Length != 6)
@@ -55,6 +88,17 @@ namespace Cayd.Uuid
             }
 
 #if !NETSTANDARD2_0
+            /// <summary>
+            /// Generates a new <see cref="Guid"/> based on UUIDv8 rules.
+            /// <para>
+            /// While generating <see cref="Guid"/>, the order of a given byte array changes accordingly.
+            /// </para>
+            /// </summary>
+            /// <param name="customA">First 48 bits. The length of the array must be 6.</param>
+            /// <param name="customB">12 bits after the version bits. The length of the array must be 2.</param>
+            /// <param name="customC">62 bits after the variant bits. The length of the array must be 8.</param>
+            /// <returns>Returns a <see cref="Guid"/> based on UUIDv8 rules.</returns>
+            /// <exception cref="WrongDataLengthException">When the length of any custom data is wrong</exception>
             public static Guid Generate(Span<byte> customA, Span<byte> customB, Span<byte> customC)
             {
                 if (customA.Length != 6)

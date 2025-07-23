@@ -7,8 +7,15 @@ namespace Cayd.Uuid
 {
     public static partial class Uuid
     {
+        /// <summary>
+        /// UUIDv6 is a field-compatible version of UUIDv1, reordered for improved DB locality. It is expected that UUIDv6 will primarily be implemented
+        /// in contexts where UUIDv1 is used. Systems that do not involve legacy UUIDv1 should use <see cref="Uuid.V7"/> instead.
+        /// </summary>
         public static class V6
         {
+            /// <summary>
+            /// Whether it should use real a MAC address or a random node ID for node bits.
+            /// </summary>
             public static bool UseRandomNodeId = false;
 
             private static readonly DateTime GregorianReformDate = new DateTime(1582, 10, 15, 0, 0, 0, DateTimeKind.Utc);
@@ -18,6 +25,11 @@ namespace Cayd.Uuid
             private static object _lockObj = new object();
             private static long _lastTimestamp = 0;
 
+            /// <summary>
+            /// Generates a new <see cref="Guid"/> based on UUIDv6 rules.
+            /// </summary>
+            /// <param name="useLock">Whether to use the locking mechanism for multithreading situations</param>
+            /// <returns>Returns a <see cref="Guid"/> based on UUIDv6 rules.</returns>
             public static Guid Generate(bool useLock = false)
             {
                 Guid result;
@@ -36,6 +48,10 @@ namespace Cayd.Uuid
                 return result;
             }
 
+            /// <summary>
+            /// Refreshes the node ID.
+            /// If the new node ID is different than the old one, it also generates a new clock sequence.
+            /// </summary>
             public static void RefreshNodeId()
             {
                 var currentNodeId = GetNodeId();

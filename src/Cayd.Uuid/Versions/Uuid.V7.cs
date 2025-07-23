@@ -5,11 +5,25 @@ namespace Cayd.Uuid
 {
     public static partial class Uuid
     {
+        /// <summary>
+        /// UUIDv7 features a time-ordered value field derived from the widely implemented and well-known Unix Epoch timestamp source,
+        /// the number of milliseconds since midnight 1 Jan 1970 UTC, leap seconds excluded. Generally, UUIDv7 has improved entropy characteristics
+        /// over UUIDv1 or UUIDv6.
+        /// </summary>
         public static class V7
         {
+            /// <summary>
+            /// Generates a new <see cref="Guid"/> based on UUIDv7 rules.
+            /// </summary>
+            /// <returns>Returns a <see cref="Guid"/> based on UUIDv7 rules.</returns>
             public static Guid Generate()
                 => GenerateGuid(DateTimeOffset.UtcNow);
 
+            /// <summary>
+            /// Generates a new <see cref="Guid"/> based on UUIDv7 rules.
+            /// </summary>
+            /// <param name="offset">Time offset to be used to generate a <see cref="Guid"/></param>
+            /// <returns>Returns a <see cref="Guid"/> based on UUIDv7 rules.</returns>
             public static Guid Generate(DateTimeOffset offset)
                 => GenerateGuid(offset);
 
