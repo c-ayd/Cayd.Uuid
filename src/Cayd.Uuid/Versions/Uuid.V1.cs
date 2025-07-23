@@ -47,7 +47,7 @@ namespace Cayd.Uuid
 
             private static Guid GenerateGuid()
             {
-                byte[] bytes = new byte[16];
+                var bytes = new byte[16];
 
                 var timestamp = (DateTime.UtcNow - GregorianReformDate).Ticks * 10;
 
@@ -60,21 +60,21 @@ namespace Cayd.Uuid
                 _lastTimestamp = timestamp;
 
                 // 'time_low' bytes
-                bytes[0] = (byte)(timestamp & 0xFF);
-                bytes[1] = (byte)((timestamp >> 8) & 0xFF);
-                bytes[2] = (byte)((timestamp >> 16) & 0xFF);
-                bytes[3] = (byte)((timestamp >> 24) & 0xFF);
+                bytes[0] = (byte)((timestamp >> 24) & 0xFF);
+                bytes[1] = (byte)((timestamp >> 16) & 0xFF);
+                bytes[2] = (byte)((timestamp >> 8) & 0xFF);
+                bytes[3] = (byte)(timestamp & 0xFF);
 
                 // 'time_mid' bytes
-                bytes[4] = (byte)((timestamp >> 32) & 0xFF);
-                bytes[5] = (byte)((timestamp >> 40) & 0xFF);
+                bytes[4] = (byte)((timestamp >> 40) & 0xFF);
+                bytes[5] = (byte)((timestamp >> 32) & 0xFF);
 
                 // 'ver' bytes
-                bytes[7] = 0x10;
+                bytes[6] = 0x10;
 
                 // 'time_high' bytes
-                bytes[6] = (byte)((timestamp >> 48) & 0xFF);
-                bytes[7] |= (byte)((timestamp >> 56) & 0x0F);
+                bytes[6] |= (byte)((timestamp >> 56) & 0x0F);
+                bytes[7] = (byte)((timestamp >> 48) & 0xFF);
 
                 // 'var' bytes
                 bytes[8] = 0x80;
@@ -89,12 +89,12 @@ namespace Cayd.Uuid
                     bytes[i + 10] = _nodeId[i];
                 }
 
-                return new Guid(bytes);
+                return GenerateGuidFromBytes(bytes);
             }
 
             private static ushort GenerateClockSequence()
             {
-                byte[] bytes = new byte[2];
+                var bytes = new byte[2];
 
 #if NETSTANDARD2_0
                 using (var rng = RandomNumberGenerator.Create())
