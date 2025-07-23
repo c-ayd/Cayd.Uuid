@@ -16,7 +16,7 @@ namespace Cayd.Uuid.Test.Unit
             // Act
             for (int i = 0; i < _numberOfGuidsToGenerate; ++i)
             {
-                guids.Add(Uuid.V3.Generate(Uuid.V3.DnsNamespaceId, GenerateRandomString()));
+                guids.Add(Uuid.V5.Generate(Uuid.V5.DnsNamespaceId, GenerateRandomString()));
             }
 
             // Assert
@@ -38,20 +38,20 @@ namespace Cayd.Uuid.Test.Unit
             var name = "Test";
 
             // Act
-            dnsGuids[0] = Uuid.V3.Generate(Uuid.V3.DnsNamespaceId, name);
-            dnsGuids[1] = Uuid.V3.Generate(Uuid.V3.DnsNamespaceId, name);
+            dnsGuids[0] = Uuid.V5.Generate(Uuid.V5.DnsNamespaceId, name);
+            dnsGuids[1] = Uuid.V5.Generate(Uuid.V5.DnsNamespaceId, name);
 
-            urlGuids[0] = Uuid.V3.Generate(Uuid.V3.UrlNamespaceId, name);
-            urlGuids[1] = Uuid.V3.Generate(Uuid.V3.UrlNamespaceId, name);
+            urlGuids[0] = Uuid.V5.Generate(Uuid.V5.UrlNamespaceId, name);
+            urlGuids[1] = Uuid.V5.Generate(Uuid.V5.UrlNamespaceId, name);
 
-            oidGuids[0] = Uuid.V3.Generate(Uuid.V3.OidNamespaceId, name);
-            oidGuids[1] = Uuid.V3.Generate(Uuid.V3.OidNamespaceId, name);
+            oidGuids[0] = Uuid.V5.Generate(Uuid.V5.OidNamespaceId, name);
+            oidGuids[1] = Uuid.V5.Generate(Uuid.V5.OidNamespaceId, name);
 
-            x500Guids[0] = Uuid.V3.Generate(Uuid.V3.X500NamespaceId, name);
-            x500Guids[1] = Uuid.V3.Generate(Uuid.V3.X500NamespaceId, name);
+            x500Guids[0] = Uuid.V5.Generate(Uuid.V5.X500NamespaceId, name);
+            x500Guids[1] = Uuid.V5.Generate(Uuid.V5.X500NamespaceId, name);
 
-            customGuids[0] = Uuid.V3.Generate(customGuid, name);
-            customGuids[1] = Uuid.V3.Generate(customGuid, name);
+            customGuids[0] = Uuid.V5.Generate(customGuid, name);
+            customGuids[1] = Uuid.V5.Generate(customGuid, name);
 
             // Assert
             Assert.Equal(dnsGuids[0], dnsGuids[1]);
