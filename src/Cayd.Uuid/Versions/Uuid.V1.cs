@@ -51,7 +51,7 @@ namespace Cayd.Uuid
             {
                 var bytes = new byte[16];
 
-                var timestamp = (DateTime.UtcNow - GregorianReformDate).Ticks * 10;
+                var timestamp = (DateTime.UtcNow - GregorianReformDate).Ticks;
 
                 // If the clock is set backwards, generate a new clock sequence to ensure uniquness
                 if (timestamp < _lastTimestamp)
