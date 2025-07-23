@@ -72,7 +72,7 @@ namespace Cayd.Uuid
                 bytes[5] = (byte)((timestamp >> 16) & 0xFF);
 
                 // 'ver' bits
-                bytes[6] = 0x10;
+                bytes[6] = 0x60;
 
                 // 'time_high' bits
                 bytes[6] |= (byte)((timestamp >> 8) & 0x0F);
