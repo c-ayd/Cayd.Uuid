@@ -9,6 +9,8 @@ namespace Cayd.Uuid
     {
         public static class V1
         {
+            public static bool UseRandomNodeId = false;
+
             private static readonly DateTime GregorianReformDate = new DateTime(1582, 10, 15, 0, 0, 0, DateTimeKind.Utc);
             private static ushort _clockSequence = GenerateClockSequence();
             private static byte[] _nodeId = GetNodeId();
@@ -110,17 +112,20 @@ namespace Cayd.Uuid
 
             private static byte[] GetNodeId()
             {
-                var macAddresses = NetworkInterface.GetAllNetworkInterfaces()
+                if (!UseRandomNodeId)
+                {
+                    var macAddresses = NetworkInterface.GetAllNetworkInterfaces()
                     .Where(ni => ni.OperationalStatus == OperationalStatus.Up)
                     .Select(ni => ni.GetPhysicalAddress())
                         .Where(pa => pa != null)
                     .ToList();
 
-                foreach (var macAddress in macAddresses)
-                {
-                    var bytes = macAddress.GetAddressBytes();
-                    if (bytes.Length == 6)
-                        return bytes;
+                    foreach (var macAddress in macAddresses)
+                    {
+                        var bytes = macAddress.GetAddressBytes();
+                        if (bytes.Length == 6)
+                            return bytes;
+                    }
                 }
 
                 var randomBytes = new byte[6];
