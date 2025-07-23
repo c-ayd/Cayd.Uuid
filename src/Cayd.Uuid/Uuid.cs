@@ -39,11 +39,38 @@ namespace Cayd.Uuid
             return new Guid(bytes);
         }
 
+#if !NETSTANDARD2_0
+        public static Guid GenerateGuidFromBytes(Span<byte> bytes)
+        {
+            SwapBytes(bytes, 0, 3);
+            SwapBytes(bytes, 1, 2);
+            SwapBytes(bytes, 4, 5);
+            SwapBytes(bytes, 6, 7);
+
+            if (bytes.Length > 16)
+            {
+                var trimmedBytes = bytes.Slice(0, 16);
+                return new Guid(trimmedBytes);
+            }
+
+            return new Guid(bytes);
+        }
+#endif
+
         private static void SwapBytes(byte[] bytes, int leftIndex, int rightIndex)
         {
             byte temp = bytes[leftIndex];
             bytes[leftIndex] = bytes[rightIndex];
             bytes[rightIndex] = temp;
         }
+
+#if !NETSTANDARD2_0
+        private static void SwapBytes(Span<byte> bytes, int leftIndex, int rightIndex)
+        {
+            byte temp = bytes[leftIndex];
+            bytes[leftIndex] = bytes[rightIndex];
+            bytes[rightIndex] = temp;
+        }
+#endif
     }
 }
