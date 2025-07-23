@@ -18,7 +18,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cayd.Uuid", "src\Cayd.Uuid\
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UnitTests", "UnitTests", "{3B75E1FE-E261-4FFA-8920-812DF01A834C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cayd.Uuid.Test.Unit", "test\UnitTests\Cayd.Uuid.Test.Unit\Cayd.Uuid.Test.Unit.csproj", "{C31AEFE4-29EF-4CA2-A83F-556C27CB0665}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cayd.Uuid.Test.Unit", "test\UnitTests\Cayd.Uuid.Test.Unit\Cayd.Uuid.Test.Unit.csproj", "{C31AEFE4-29EF-4CA2-A83F-556C27CB0665}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "assets", "assets", "{2327B589-E646-4291-AC6C-7CA0AD0B4E9C}"
+	ProjectSection(SolutionItems) = preProject
+		assets\nuget-logo.png = assets\nuget-logo.png
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
